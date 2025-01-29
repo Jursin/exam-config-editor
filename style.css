@@ -43,7 +43,7 @@ body {
 }
 
 #app {
-    max-width: 800px;
+    max-width: 1450px;
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
@@ -63,19 +63,24 @@ body {
     font-weight: bold;
 }
 
-.config-editor input[type="text"],
-.config-editor input[type="datetime-local"] {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.small-input {
+    width: 75px;
+}
+
+.medium-input {
+    width: 250px;
 }
 
 .config-editor .exam-info {
     display: flex;
     gap: 10px;
     margin-bottom: 10px;
+}
+
+.delete-btn {
+    width: 70px;
+    white-space: nowrap;
+    text-align: center;
 }
 
 .config-editor button {
@@ -94,4 +99,18 @@ body {
 .button-group {
     display: flex;
     align-items: center;
-    justify-content: space-between
+    justify-content: space-between;
+}
+
+.button-group-right {
+    display: flex;
+    gap: 10px;
+}
+
+pre {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow-x: auto;
+}
