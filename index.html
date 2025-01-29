@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>考试看板配置编辑器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>考试看板配置编辑器</h1>
+        <div class="header-links">
+            <a href="https://github.com/ExamAware/dsz-exam-showboard" target="_blank">
+                <img src="resource/Exam-Showboard.png" alt="Exam-Showboard 图标" class="icon">
+                Exam-Showboard
+            </a>
+            <a href="https://github.com/Jursin/exam-config-editor" target="_blank" id="githubRepo">
+                <img src="resource/GitHub.png" alt="GitHub 图标" class="icon">
+                GitHub 仓库
+            </a>
+        </div>
+    </header>
+    
+    <div id="app">
+        <div class="config-editor">
+            <div class="card">
+                <label for="examName">考试名称</label>
+                <input type="text" id="examName" v-model="examName">
+            </div>
+            <div class="card">
+                <label for="message">提示信息</label>
+                <input type="text" id="message" v-model="message">
+            </div>
+            <div class="card">
+                <label for="room">考场号</label>
+                <input type="text" id="room" v-model="room">
+            </div>
+            <div class="card">
+                <label>考试信息</label>
+                <div v-for="(info, index) in examInfos" :key="index" class="exam-info">
+                    <input type="text" v-model="info.name" placeholder="科目名称">
+                    <input type="datetime-local" v-model="info.start">
+                    <input type="datetime-local" v-model="info.end">
+                    <button @click="removeExamInfo(index)">删除</button>
+                </div>
+                <button @click="addExamInfo">添加考试信息</button>
+            </div>
+            <div class="card">
+                <label>JSON 配置预览</label>
+                <pre>{{ jsonConfig }}</pre>
+            </div>
+            <div class="button-group">
+                <label>
+                    <input type="checkbox" v-model="autoClearAfterExport"> 导出配置后自动清空
+                </label>
+                <div class="button-group-right">
+                    <button @click="clearConfig">清空配置</button>
+                    <input type="file" id="fileInput" @change="importConfig" style="display: none;">
+                    <button @click="confirmImport">导入配置</button>
+                    <button @click="exportConfig">导出配置</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入 Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <!-- 引入自定义 JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
