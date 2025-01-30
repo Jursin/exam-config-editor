@@ -64,7 +64,7 @@ body {
 }
 
 .small-input {
-    width: 75px;
+    width: 60px;
 }
 
 .medium-input {
@@ -104,7 +104,31 @@ body {
 
 .button-group-right {
     display: flex;
+    align-items: center;
     gap: 10px;
+}
+
+.export-filename-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    background: #fff;
+}
+
+.export-filename {
+    border: none;
+    outline: none;
+    padding: 5px;
+    font-size: 14px;
+    width: 150px;
+}
+
+.export-filename-wrapper span {
+    font-size: 14px;
+    margin-left: 5px;
+    color: #666;
 }
 
 pre {
@@ -113,4 +137,10 @@ pre {
     border: 1px solid #ddd;
     border-radius: 4px;
     overflow-x: auto;
+    font-family: "Courier New", monospace;
+    font-size: 14px;
+}
+
+input[type="datetime-local"] {
+    font-family: "Arial", sans-serif;
 }

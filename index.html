@@ -21,7 +21,7 @@
             </a>
         </div>
     </header>
-    
+
     <div id="app">
         <div class="config-editor">
             <div class="card">
@@ -52,9 +52,13 @@
             </div>
             <div class="button-group">
                 <label>
-                    <input type="checkbox" v-model="autoClearAfterExport"> 导出配置后自动清空
+                    <input type="checkbox" v-model="autoClearAfterExport"> 导出配置时自动清空
                 </label>
                 <div class="button-group-right">
+                    <div class="export-filename-wrapper">
+                        <input type="text" v-model="exportFileName" placeholder="导出文件名" class="export-filename">
+                        <span>.json</span>
+                    </div>
                     <button @click="clearConfig">清空配置</button>
                     <input type="file" id="fileInput" @change="importConfig" style="display: none;">
                     <button @click="confirmImport">导入配置</button>
