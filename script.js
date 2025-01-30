@@ -52,7 +52,7 @@ new Vue({
             this.downloadJsonFile();
 
             if (this.autoClearAfterExport) {
-                this.clearConfig();
+                this.clearConfigWithoutPrompt();
             }
         },
         downloadJsonFile() {
@@ -88,8 +88,6 @@ new Vue({
                     this.message = data.message || '';
                     this.room = data.room || '';
                     this.examInfos = Array.isArray(data.examInfos) ? data.examInfos : [];
-
-                    alert("配置导入成功！");
                 } catch (error) {
                     alert("配置文件格式错误，请检查后再试！");
                 }
@@ -103,6 +101,12 @@ new Vue({
                 this.room = '';
                 this.examInfos = [];
             }
+        },
+        clearConfigWithoutPrompt() {
+            this.examName = '';
+            this.message = '';
+            this.room = '';
+            this.examInfos = [];
         }
     }
 });
