@@ -42,6 +42,7 @@
                     <input type="text" v-model="info.name" placeholder="科目名称" class="small-input">
                     <input type="datetime-local" v-model="info.start" class="medium-input">
                     <input type="datetime-local" v-model="info.end" class="medium-input">
+                    <input type="number" v-model.number="info.alertTime" min="0" class="small-input" placeholder="提醒时间">
                     <button class="delete-btn" @click="removeExamInfo(index)">删除</button>
                 </div>
                 <button @click="addExamInfo">添加考试信息</button>
@@ -56,7 +57,7 @@
                 </label>
                 <div class="button-group-right">
                     <div class="export-filename-wrapper">
-                        <input type="text" v-model="exportFileName" placeholder="导出文件名" class="export-filename">
+                        <input type="text" v-model="exportFileName" placeholder="请输入文件名前缀" class="export-filename">
                         <span>.json</span>
                     </div>
                     <button @click="clearConfig">清空配置</button>
@@ -68,9 +69,7 @@
         </div>
     </div>
 
-    <!-- 引入 Vue.js -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-    <!-- 引入自定义 JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
