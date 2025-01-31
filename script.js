@@ -20,7 +20,7 @@ new Vue({
     },
     methods: {
         addExamInfo() {
-            this.examInfos.push({ name: '', start: '', end: '' });
+            this.examInfos.push({ name: '', start: '', end: '', alertTime: 15 });
         },
         removeExamInfo(index) {
             this.examInfos.splice(index, 1);
@@ -45,6 +45,10 @@ new Vue({
                 }
                 if (new Date(info.start) >= new Date(info.end)) {
                     alert("考试开始时间必须早于结束时间！");
+                    return;
+                }
+                if (typeof info.alertTime !== 'number' || info.alertTime < 0) {
+                    alert("考试结束提醒时间必须是非负整数！");
                     return;
                 }
             }
@@ -87,7 +91,14 @@ new Vue({
                     this.examName = data.examName || '';
                     this.message = data.message || '';
                     this.room = data.room || '';
-                    this.examInfos = Array.isArray(data.examInfos) ? data.examInfos : [];
+                    this.examInfos = Array.isArray(data.examInfos)
+                        ? data.examInfos.map(info => ({
+                            name: info.name || '',
+                            start: info.start || '',
+                            end: info.end || '',
+                            alertTime: typeof info.alertTime === 'number' ? info.alertTime : 15
+                        }))
+                        : [];
                 } catch (error) {
                     alert("配置文件格式错误，请检查后再试！");
                 }
